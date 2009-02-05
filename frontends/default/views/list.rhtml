@@ -22,6 +22,16 @@
           </td> 
         </tr>
       <% end %>
+   <%# add configuration option for bulk_create and for this if statement below %>
+      <% if params[:nested].nil? && active_scaffold_config.list.always_show_create %>
+        <tr> 
+          <td> 
+            <div  class="active-scaffold create-view <%= "#{params[:controller]}-view" %> view">
+              <%= render :partial => 'bulk_create_form_on_list' %>
+            </div> 
+          </td> 
+        </tr>
+      <% end %>
     </tbody>
   </table>
   <div id="<%= active_scaffold_content_id -%>">
