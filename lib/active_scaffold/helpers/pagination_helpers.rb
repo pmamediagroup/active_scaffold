@@ -3,23 +3,23 @@ module ActiveScaffold
     module PaginationHelpers
       def pagination_ajax_link(page_number, params)
         page_link = link_to_remote(page_number,
-                  { :url => params.merge(:page => page_number),
-                    :after => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'visible';",
-                    :complete => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'hidden';",
-                    :update => active_scaffold_content_id,
-                    :failure => "ActiveScaffold.report_500_response('#{active_scaffold_id}')",
-                    :method => :get },
-                  { :href => url_for(params.merge(:page => page_number)) })
+          { :url => params.merge(:page => page_number),
+            :after => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'visible';",
+            :complete => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'hidden';",
+            :update => active_scaffold_content_id,
+            :failure => "ActiveScaffold.report_500_response('#{active_scaffold_id}')",
+            :method => :get },
+          { :href => url_for(params.merge(:page => page_number)) })
       end
       def toggle_pagination_button
-            page_link = link_to_remote("Show All",
-                  { :action => "toggle_pagination",
-                    :after => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'visible';",
-                    :complete => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'hidden';",
-                    :update => active_scaffold_content_id,
-                    :failure => "ActiveScaffold.report_500_response('#{active_scaffold_id}')",
-                    :method => :get },
-                  { :href => url_for(:action => "toggle_pagination") })
+        return link_to_remote("Show All",
+          { :action => "toggle_pagination",
+            :after => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'visible';",
+            :complete => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'hidden';",
+            :update => active_scaffold_content_id,
+            :failure => "ActiveScaffold.report_500_response('#{active_scaffold_id}')",
+            :method => :get },
+          { :href => url_for(:action => "toggle_pagination") })
       end
       def pagination_ajax_links(current_page, params)
         start_number = current_page.number - 2
