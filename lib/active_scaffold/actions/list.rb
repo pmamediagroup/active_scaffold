@@ -12,9 +12,15 @@ module ActiveScaffold::Actions
        if active_scaffold_config.list.user.per_page == 10000000
        	   active_saffold_config.list.user.per_page = 25
        else
-	   active_sacffold_config.list.user.per_page = 10000000
+	        active_sacffold_config.list.user.per_page = 10000000
        end
-       list
+       respond_to do |type|
+        type.js do
+          do_list
+          render(:partial => 'list', :layout => false)
+        end
+        type.html { return_to_main }
+      end
     end
 
     def table
