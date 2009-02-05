@@ -7,6 +7,15 @@ module ActiveScaffold::Actions
     def index
       list
     end
+    
+    def toggle_pagination
+       if active_scaffold_config.list.user.per_page == 10000000
+       	   active_saffold_config.list.user.per_page = 25
+       else
+	   active_sacffold_config.list.user.per_page = 10000000
+       end
+       list
+    end
 
     def table
       do_list
