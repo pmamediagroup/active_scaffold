@@ -12,7 +12,7 @@ module ActiveScaffold
                   { :href => url_for(params.merge(:page => page_number)) })
       end
       def toggle_pagination_button
-            link_to_remote(as_("Show All"),
+            page_link = link_to_remote("Show All",
                   { :action => "toggle_pagination",
                     :after => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'visible';",
                     :complete => "$('#{loading_indicator_id(:action => :pagination)}').style.visibility = 'hidden';",
